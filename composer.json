@@ -1,0 +1,19 @@
+{
+    "name": "kevin/utslec2_copy",
+    "description": "utslecEVENT",
+    "autoload": {
+        "psr-4": {
+            "Kevin\\Utslec2Copy\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kkaveman",
+            "email": "kevinanatta1@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "phpoffice/phpspreadsheet": "dev-master"
+    }
+}
