@@ -136,6 +136,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8">
+        <div class="mx-5 mb-5">
+            <a href="dashboard.php" class="text-blue-600 hover:underline">← Back to Dashboard</a>  
+        </div>
+        
         <?php if ($registration_message): ?>
             <div class="mb-6 p-4 rounded-lg <?= $is_registered ? 'bg-green-50 border border-green-200' : 'bg-yellow-50 border border-yellow-200' ?>">
                 <div class="flex">

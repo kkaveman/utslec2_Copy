@@ -148,8 +148,17 @@ function handleImageDelete($db, $event_id) {
     <?php require("admin_nav.php"); ?>
 
     <main class="container mx-auto mt-8 p-6 bg-white rounded-lg shadow-md">
-        <h2 class="text-2xl font-semibold text-blue-600 mb-4">Image Management for Event: <?php echo htmlspecialchars($event['title']); ?></h2>
-
+    
+    <div>
+        <div class="flex justify-between items-center mb-6">
+            <div>
+                <h3 class="text-2xl font-semibold text-blue-600 mb-4">Image Management for Event: <?php echo htmlspecialchars($event['title']); ?></h3>
+            </div>
+            <a href="dashboard.php" class="text-blue-600 hover:underline">← Back to Dashboard</a>
+        </div>
+       
+      
+      
         <?php if (!empty($message)): ?>
             <div class="mb-6 p-4 bg-blue-100 border border-blue-400 text-blue-700 rounded">
                 <?php echo $message; ?>
