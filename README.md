@@ -89,6 +89,10 @@ ALTER TABLE `user_event`
 COMMIT;
 
 step 2: go to db.php and modify config according to ur db setup
-step 3: go to index.php
-step 4: go to composer.json
-step 5: change "name": "kevin/utslec2_copy", to ur folder/utslec2_copy
+step 3: go to composer.json
+step 4: change "name": "kevin/utslec2_copy", to ur folder/utslec2_copy
+
+
+step 5:
+to become admin , go to phpmyadmin or DBMS: 
+update user set is_admin = 1 where user_id = (your_user_id);

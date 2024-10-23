@@ -1,5 +1,8 @@
 <?php
-session_start();
+// Only start session if one hasn't been started already
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1;
 ?>
 
@@ -59,4 +62,3 @@ $is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1;
     </script>
 </body>
 </html>
-<?php

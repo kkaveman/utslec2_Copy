@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1;
 ?>
 <!DOCTYPE html>
@@ -26,7 +28,7 @@ $is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1;
                 <!-- Desktop menu -->
                 <div class="hidden md:flex space-x-4">
                     <a href="dashboard.php" class="text-white hover:text-blue-200">Dashboard</a>
-                    <a href="profile.php" class="text-white hover:text-blue-200">Profile</a>
+                    <a href="../profile.php" class="text-white hover:text-blue-200">Profile</a>
                     <a href="../dashboard.php" class="text-white hover:text-blue-200">User Dashboard</a>
                     <a href="../logout.php" class="text-white hover:text-blue-200">Logout</a>
                 </div>
