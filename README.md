@@ -20,7 +20,7 @@ CREATE TABLE `event` (
   `description` varchar(255) NOT NULL,
   `banner` varchar(255) DEFAULT '',
   `status` enum('active','completed','cancelled','upcoming') DEFAULT 'upcoming'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 
 
@@ -28,7 +28,7 @@ CREATE TABLE `event_img` (
   `event_img_id` int NOT NULL,
   `event_id` int DEFAULT NULL,
   `event_img` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 
 
@@ -39,13 +39,13 @@ CREATE TABLE `user` (
   `email` varchar(70) NOT NULL,
   `pass` varchar(100) NOT NULL,
   `is_admin` tinyint(1) DEFAULT '0'
-) ;
+);
 
 
 CREATE TABLE `user_event` (
   `event_id` int NOT NULL,
   `user_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+);
 
 
 ALTER TABLE `event`
