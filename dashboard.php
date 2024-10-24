@@ -328,6 +328,7 @@ $user_registered_events = $user_events_stmt->fetchAll(PDO::FETCH_COLUMN);
 
             function filterEvents() {
                 const searchTerm = searchInput.value.toLowerCase();
+                let visibleCount = 0;
                 
                 eventCards.forEach(card => {
                     const title = card.querySelector('.event-title').textContent.toLowerCase();
@@ -341,29 +342,32 @@ $user_registered_events = $user_events_stmt->fetchAll(PDO::FETCH_COLUMN);
                         (currentFilter === 'registered' && isRegistered) ||
                         (currentFilter !== 'registered' && status === currentFilter);
                     
-                    card.style.display = matchesSearch && matchesFilter ? '' : 'none';
+                    if (matchesSearch && matchesFilter) {
+                        card.style.display = '';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
                 });
 
-                const visibleCards = document.querySelectorAll('.event-card[style=""]').length;
-                const noResultsDiv = document.querySelector('.no-results');
-                
-                if (visibleCards === 0) {
-                    if (!noResultsDiv) {
-                        const message = document.createElement('div');
-                        message.className = 'no-results header';
-                        message.innerHTML = `
-                            <div class="text-center">
-                                <i class="fas fa-search fa-3x" style="color: #667eea;"></i>
-                                <h3 class="event-title">No Events Found</h3>
-                                <p>Try adjusting your search or filter criteria</p>
-                            </div>
-                        `;
-                        document.querySelector('.events-grid').after(message);
-                    }
-                } else {
-                    if (noResultsDiv) {
-                        noResultsDiv.remove();
-                    }
+                // Remove any existing no-results message
+                const existingNoResults = document.querySelector('.no-results');
+                if (existingNoResults) {
+                    existingNoResults.remove();
+                }
+
+                // Only show no-results message if there are absolutely no visible cards
+                if (visibleCount === 0) {
+                    const message = document.createElement('div');
+                    message.className = 'no-results header';
+                    message.innerHTML = `
+                        <div class="text-center">
+                            <i class="fas fa-search fa-3x" style="color: #667eea;"></i>
+                            <h3 class="event-title">No Events Found</h3>
+                            <p>Try adjusting your search or filter criteria</p>
+                        </div>
+                    `;
+                    document.querySelector('.events-grid').after(message);
                 }
             }
 
@@ -371,11 +375,8 @@ $user_registered_events = $user_events_stmt->fetchAll(PDO::FETCH_COLUMN);
 
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                    });
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-                    
                     currentFilter = button.dataset.filter;
                     filterEvents();
                 });
