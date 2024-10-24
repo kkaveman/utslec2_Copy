@@ -1,4 +1,5 @@
 <?php
+//profile.php
 require_once('functions.php');
 require_once('db.php');
 session_start();
@@ -102,11 +103,46 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .header, .filters {
+                padding: 1rem;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+
 </head>
 <body class="bg-gray-50">
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-2xl mx-auto">
-            <h1 class="text-3xl font-bold text-gray-800 mb-8">Profile Settings</h1>
+            <h1 class="text-3xl font-bold text-white mb-8">Profile Settings</h1>
             
             <?php if (!empty($message)): ?>
                 <div class="mb-4 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
@@ -187,7 +223,7 @@ $events = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             <!-- Event History Section -->
             <div class="mt-8">
-                <h2 class="text-2xl font-bold text-gray-800 mb-4">Event History</h2>
+                <h2 class="text-2xl font-bold text-white m-4">Event History</h2>
                 <div class="bg-white rounded-xl shadow-sm overflow-hidden">
                     <?php if (empty($events)): ?>
                         <div class="p-6 text-center text-gray-500">

@@ -14,7 +14,8 @@ $is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1;
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <nav class="bg-blue-600 p-4">
+    <!-- Fixed position and backdrop-blur for the navbar -->
+    <nav class="fixed w-full bg-blue-600/30 backdrop-blur-md shadow-lg z-10">
         <div class="container mx-auto">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
@@ -32,7 +33,7 @@ $is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1;
                     <a href="dashboard.php" class="text-white hover:text-blue-200">Dashboard</a>
                     <a href="profile.php" class="text-white hover:text-blue-200">Profile</a>
                     <?php if ($is_admin): ?>
-                        <a href="admin/dashboard.php" class="bg-white text-blue-600 px-3 py-1 rounded hover:bg-blue-100">Admin</a>
+                        <a href="admin/dashboard.php" class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded hover:bg-white/30 transition duration-200">Admin</a>
                     <?php endif; ?>
                     <a href="logout.php" class="text-white hover:text-blue-200">Logout</a>
                 </div>
@@ -44,13 +45,18 @@ $is_admin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] == 1;
                     <a href="dashboard.php" class="text-white hover:text-blue-200">Dashboard</a>
                     <a href="profile.php" class="text-white hover:text-blue-200">Profile</a>
                     <?php if ($is_admin): ?>
-                        <a href="admin/dashboard.php" class="bg-white text-blue-600 px-3 py-1 rounded hover:bg-blue-100 w-fit">Admin</a>
+                        <a href="admin/dashboard.php" class="bg-white/20 backdrop-blur-sm text-white px-3 py-1 rounded hover:bg-white/30 transition duration-200 w-fit">Admin</a>
                     <?php endif; ?>
                     <a href="logout.php" class="text-white hover:text-blue-200">Logout</a>
                 </div>
             </div>
         </div>
     </nav>
+
+    <!-- Add padding to the body to prevent content from hiding under fixed navbar -->
+    <div class="pt-20">
+        <!-- Your page content goes here -->
+    </div>
 
     <script>
         const mobileMenuButton = document.getElementById('mobile-menu-button');
