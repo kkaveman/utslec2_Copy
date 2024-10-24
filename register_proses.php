@@ -3,7 +3,7 @@
 require_once("db.php");
 require_once("functions.php");
 $fname = strtolower($_POST["fname"]);
-$lname = strtolower($_POST["lname"]);
+$lname = $_POST["lname"]==''? null : strtolower($_POST["lname"]) ;
 $email = strtolower($_POST["email"]);
 $pass = $_POST["pass"];
 

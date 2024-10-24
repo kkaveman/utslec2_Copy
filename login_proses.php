@@ -8,9 +8,14 @@ require_once("functions.php");
 $username = strtolower($_POST["username"]);
 $password = $_POST["pass"];
 
-$sql = "SELECT * from user WHERE (email= ? or concat(first_name,' ',last_name)=?)";
+// Modified SQL query to properly handle login cases
+$sql = "SELECT * FROM user WHERE 
+        email = ? OR 
+        (first_name = ? AND last_name IS NULL) OR 
+        (CONCAT(first_name, ' ', last_name) = ?)";
+
 $result = $db->prepare($sql);
-$result->execute([$username, $username]); // Pass the username twice, once for email and once for name concatenation
+$result->execute([$username, $username, $username]); 
 
 $row = $result->fetch(PDO::FETCH_ASSOC);
 

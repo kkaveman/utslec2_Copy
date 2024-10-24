@@ -267,7 +267,7 @@
             
             <div class="input-group">
                 <i class="fas fa-user"></i>
-                <input name="lname" type="text" placeholder="Last Name" required />
+                <input name="lname" type="text" placeholder="Last Name"/>
             </div>
             
             <div class="input-group">
